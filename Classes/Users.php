@@ -1,6 +1,11 @@
 <?php
 // Connexion a la base de données
-require_once 'config/config.php';
+define("DB_HOST", 'localhost');
+define("DB_NAME", 'todolist');
+define('DB_CHARSET', 'utf8');
+define("DB_USER", 'root');
+define("DB_PASSWORD", '');
+
 class Users
 {
     protected $db;
@@ -26,6 +31,22 @@ class Users
         $query->execute(['login' => $login]);
         $result = $query->fetch();
         if ($result['total'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function verifyPassword($password)
+    {
+        if (preg_match('/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,}$/', $password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function checkPassword($password, $passwordConfirm)
+    {
+        if ($password === $passwordConfirm) {
             return true;
         } else {
             return false;

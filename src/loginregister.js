@@ -16,7 +16,28 @@ btnRegisterForm.addEventListener('click', async (ev) => {
             })
             .then(response => response.json())
             .then(data => {
-
+                    let message = document.querySelector('#errorMsg');
+                    if (data.status === 'emptyField') {
+                        message.innerHTML = 'Veillez remplir tous les champs';
+                        message.classList.add('alert-danger');
+                        message.classList.remove('alert-success');
+                    } else if (data.status === 'loginExist') {
+                        message.innerHTML = 'Ce login existe déjà';
+                        message.classList.add('alert-danger');
+                        message.classList.remove('alert-success');
+                    } else if (data.status === 'passwordInvalid') {
+                        message.innerHTML = 'Le mot de passe doit contenir au moins 5 caractères';
+                        message.classList.add('alert-danger');
+                        message.classList.remove('alert-success');
+                    } else if (data.status === 'passwordNotMatch') {
+                        message.innerHTML = 'Les mots de passe ne correspondent pas';
+                        message.classList.add('alert-danger');
+                        message.classList.remove('alert-success');
+                    } else if (data.status === 'success') {
+                        message.innerHTML = 'Inscription réussie';
+                        message.classList.add('alert-success');
+                        message.classList.remove('alert-danger');
+                    }
             })
         })
 });
