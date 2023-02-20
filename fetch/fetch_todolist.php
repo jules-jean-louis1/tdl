@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once '../Classes/DoList.php';
 
 $list = new DoList();
 
 if(isset($_POST['titleTodoList'])) {
     $titre = $_POST['titleTodoList'];
-    $contenu = $_POST['contentTodoList'];
+    $contenu = $_POST['descriptionTodoList'];
     $id_utilisateur = $_SESSION['id'];
 
     if(empty($titre) || empty($contenu)) {
@@ -17,3 +18,4 @@ if(isset($_POST['titleTodoList'])) {
         echo json_encode(['status' => 'success']);
     }
 }
+?>

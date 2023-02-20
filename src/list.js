@@ -1,4 +1,5 @@
 const dolistForm = document.querySelector('#todolistForm');
+const btnTodoList = document.querySelector('#btnTodoList');
 function dislpayList() {
     fetch('fetch/fetch_list.php')
     .then(response => response.json())
@@ -38,15 +39,18 @@ dolistForm.addEventListener('submit', (e) => {
     .then(response => response.json())
     .then(data => {
         let message = document.querySelector('#errorMsg');
-        if (data.success === 'emptyFields') {
+        if (data.status === 'emptyFields') {
             message.innerHTML = 'Veillez remplir tous les champs';
             message.classList.add('alert-danger');
             message.classList.remove('alert-success');
-        } else if (data.success === 'success') {
+        } else if (data.status === 'success') {
             message.innerHTML = 'Todo list ajouté';
             message.classList.add('alert-success');
             message.classList.remove('alert-danger');
-            dislpayList();
         }
     })
+});
+btnTodoList.addEventListener('click', (e) => {
+    e.preventDefault();
+    setTimeout(dislpayList, 10);
 });
