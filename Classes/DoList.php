@@ -27,7 +27,7 @@ class DoList
     }
     public function createEvent($contenu, $id_utilisateur, $titre)
     {
-        $query = $this->db->prepare("INSERT INTO tasks (contenu, creer, modifier, id_utilisateur, titre, done) VALUES (:contenu, NOW(), NOW(), :id_utilisateur, :titre, 0)");
+        $query = $this->db->prepare("INSERT INTO tasks (contenu, creer, modifier, id_utilisateur, titre, done) VALUES (:contenu, NOW(), NULL, :id_utilisateur, :titre, 0)");
         $query->execute([
             'contenu' => $contenu,
             'id_utilisateur' => $id_utilisateur,
@@ -36,10 +36,14 @@ class DoList
     }
     public function getEvents()
     {
-        $done = 0;
-        $query = $this->db->prepare("SELECT tasks.id, `contenu`,`creer`,`titre`,`login`, `done` FROM utilisateurs INNER JOIN tasks WHERE utilisateurs.id = tasks.id_utilisateur ORDER BY `creer` DESC");
-//        $query->execute(['id_utilisateur' => $id_utilisateur]);
-        $query->execute();
+        $login = $_SESSION['login'];
+        $query = $this->db->prepare("SELECT tasks.id, contenu, creer, titre, login, done
+                                    FROM utilisateurs
+                                    INNER JOIN tasks ON utilisateurs.id = tasks.id_utilisateur
+                                    WHERE done = 0 AND login = :login
+                                    ORDER BY creer DESC
+                                ");
+        $query->execute(['login' => $login]);
         header("Content-Type: JSON");
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
@@ -60,8 +64,14 @@ class DoList
     }
     public function doneList()
     {
-        $query = $this->db->prepare("SELECT tasks.id, `contenu`,`creer`,`titre`,`login`, `done` FROM utilisateurs INNER JOIN tasks WHERE utilisateurs.id = tasks.id_utilisateur AND done = 1 ORDER BY `creer` DESC");
-        $query->execute();
+        $login = $_SESSION['login'];
+        $query = $this->db->prepare("SELECT tasks.id, contenu, creer, titre, login, done
+                                    FROM utilisateurs
+                                    INNER JOIN tasks ON utilisateurs.id = tasks.id_utilisateur
+                                    WHERE done = 1 AND login = :login
+                                    ORDER BY creer DESC
+                                ");
+        $query->execute(['login' => $login]);
         header("Content-Type: JSON");
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);

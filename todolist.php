@@ -29,8 +29,11 @@ session_start();
                    <div class="flex flex-col">
                        <div id="titleTodoList" class="flex flex-col items-center">
                            <h1 class="text-3xl p-2">TodoList</h1>
-                           <p class="text-lg">Bienvenue <?= $_SESSION['login'] ?> sur votre DoToList, votre application
-                               de gestion de tâches.</p>
+                           <?php if(isset($_SESSION['login'])) : ?>
+                               <p class="text-lg">Bienvenue <?= $_SESSION['login'] ?> sur votre DoToList, votre application de gestion de tâches.</p>
+                           <?php else : ?>
+                               <p class="text-lg">Bienvenue sur votre DoToList, votre application de gestion de tâches.</p>
+                           <?php endif; ?>
                        </div>
                        <div id="containerTodoListForm">
                            <form action="fetch/fetch_todolist.php" method="post" id="todolistForm">

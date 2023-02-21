@@ -70,6 +70,7 @@ function updateList(id) {
         return response.json();
     })
     .then(data => {
+        console.log(data);
         if (data.status === 'success') {
             dislpayList();
         }
@@ -78,12 +79,14 @@ function updateList(id) {
 function deleteList(id) {
     fetch(`fetch/fetch_delete.php?id=${id}`)
         .then(response => {
+            console.log(response);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
         .then(data => {
+            console.log(data);
             if (data.status === 'success') {
                 dislpayList();
             }
