@@ -13,6 +13,7 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
         <!--JavaScript-->
     <script defer src="src/loginregister.js"></script>
+    <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <title>DoToList</title>
 </head>
 <body>
@@ -25,11 +26,24 @@ session_start();
         <article>
             <section class="flex justify-center pt-[4%]">
                 <div class="flex flex-col">
-                    <div id="btnContainer">
-                        <button id="btnRegister" class="bg-red-500 py-3 px-2 text-white">S'inscrire</button>
-                        <button id="btnLogin" class="bg-blue-500 py-3 px-2 text-white">Se connecter</button>
+                    <div class="flex flex-col">
+                        <h2>
+                            <span>To Do List</span>
+                        </h2>
                     </div>
-                    <div id="containerForm"></div>
+                    <div class="flex flex-col">
+                        <div id="btnContainer">
+                            <button id="btnRegister"
+                                    class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-500 to-orange-600 ease-in hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-500">
+                                S'inscrire
+                            </button>
+                            <button id="btnLogin"
+                                    class="border-2 border-orange-600 rounded-full px-3 py-2 hover:text-[#fd7330]">Se
+                                connecter
+                            </button>
+                        </div>
+                        <div id="containerForm"></div>
+                    </div>
                 </div>
             </section>
         </article>

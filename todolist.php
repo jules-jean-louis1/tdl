@@ -13,8 +13,9 @@ session_start();
     <!--Tailwinds-->
     <script src="https://cdn.tailwindcss.com"></script>
     <!--JavaScript-->
+    <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <script defer src="src/list.js"></script>
-    <title>Document</title>
+    <title>ToDoList</title>
 </head>
 <body>
 <!--H E A D E R   C O N T E N T-->
@@ -24,9 +25,9 @@ session_start();
 <!--M A I N   C O N T E N T-->
    <main>
        <article>
-           <section>
-               <div class="flex justify-center pt-[3%]">
-                   <div class="flex flex-col">
+           <section class="flex justify-center">
+               <div class="flex justify-center pt-[3%] lg:w-[90%]">
+                   <div class="flex flex-col w-full">
                        <div id="titleTodoList" class="flex flex-col items-center">
                            <h1 class="text-3xl p-2">TodoList</h1>
                            <?php if(isset($_SESSION['login'])) : ?>
@@ -37,7 +38,7 @@ session_start();
                        </div>
                        <div id="containerTodoListForm">
                            <form action="fetch/fetch_todolist.php" method="post" id="todolistForm">
-                               <div class="flex lg:flex-row lg:space-x-2 py-4">
+                               <div class="flex justify-center lg:flex-row lg:space-x-2 py-4">
                                    <div class="flex flex-col">
                                        <label for="titleTodoList">Titre de la tâche</label>
                                        <input type="text" name="titleTodoList" id="titleTodoList"
@@ -49,16 +50,18 @@ session_start();
                                               class="border-2 border-black rounded-md p-2 text-black">
                                    </div>
                                   <button type="submit" name="btnTodoList" id="btnTodoList"
-                                         class="bg-red-600 hover:bg-red-800 rounded-lg text-white py-4 px-2">Ajouter cette tâche
+                                         class="ease-in bg-gradient-to-b from-[#fd7330] to-[#ef4b00] hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-700 rounded-lg text-white py-4 px-2">
+                                      <i class="fa-solid fa-circle-plus"></i>
+                                      Ajouter une tâche
                                   </button>
                                </div>
                                <div id="errorMsg"></div>
                            </form>
                        </div>
-                       <div id="listTask" class="flex justify-around">
+                       <div id="listTask" class="flex flex-row justify-around space-x-4">
                            <div class="flex flex-col">
                                <h1 class="text-3xl p-2">Liste des tâches</h1>
-                               <div id="displayTodoList"></div>
+                               <div id="displayTodoList" class=""></div>
                            </div>
                            <div class="flex flex-col items-center">
                                <h1 class="text-3xl p-2">Tâches terminées</h1>
