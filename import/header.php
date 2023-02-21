@@ -15,6 +15,7 @@
                             <a href="contact.php"><?=$_SESSION['login'];?></a>
                         </li>
                         <li><a href="deconnexion.php" class="border-2 border-orange-600 rounded-full px-3 py-2 hover:text-[#fd7330]">Deconnexion</a></li>
+                        <li><a href="https://github.com/jules-jean-louis1/tdl" class="hover:text-[#fd7330]"></a><i class="fa-brands fa-github fa-2x"></i></li>
                     </ul>
                 </div>
             </div>
