@@ -38,18 +38,18 @@ session_start();
                                    <div class="flex flex-col">
                                        <label for="titleTodoList">Titre de la tâche</label>
                                        <input type="text" name="titleTodoList" id="titleTodoList"
-                                              class="border-2 border-black rounded-md p-2">
+                                              class="border-2 border-black rounded-md p-2 text-black">
                                    </div>
                                    <div class="flex flex-col">
                                        <label for="descriptionTodoList">Description de la tâche</label>
                                        <input type="text" name="descriptionTodoList" id="descriptionTodoList"
-                                              class="border-2 border-black rounded-md p-2">
+                                              class="border-2 border-black rounded-md p-2 text-black">
                                    </div>
-                                   <div id="errorMsg"></div>
                                   <button type="submit" name="btnTodoList" id="btnTodoList"
                                          class="bg-red-600 hover:bg-red-800 rounded-lg text-white py-4 px-2">Ajouter cette tâche
                                   </button>
                                </div>
+                               <div id="errorMsg"></div>
                            </form>
                        </div>
                        <div id="listTask" class="flex justify-around">

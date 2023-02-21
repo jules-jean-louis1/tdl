@@ -8,19 +8,22 @@ function dislpayList() {
         displaytodo.innerHTML = '';
         data.forEach(element => {
             displaytodo.innerHTML += `
-            <div class="flex flex-col">
+            <div class="flex flex-col border-2 border-blue-800 rounded-lg my-2 p-2">
                 <div class="flex flex-col space-y-3">
                     <div class="col-md-10">
                         <h3>Titre de l'event: ${element.titre}</h3>
                         <p>Créer par ${element.login} le ${element.creer}</p>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col bg-slate-500 p-2 rounded">
+                        <h3>Description :</h3>
                         <p>
-                            <span class="bg-slate-200 p-2 rounded">${element.contenu}</span>
+                            <span>${element.contenu}</span>
+                            <span>ID: ${element.id}</span>
                         </p>
                     </div>
-                    <div class="flex">
-                        <button class="rounded-lg bg-red-500 text-white p-2" onclick="deleteList(${element.id})">Delete</button>
+                    <div class="flex justify-around">
+                        <button class="rounded-lg bg-red-500 text-white p-2" id="btnDelete" onclick="deleteList(${element.id})">Delete</button>
+                        <button class="rounded-lg bg-green-500 text-white p-2" onclick="updateList(${element.id})">Done</button>
                     </div>
                 </div>
             </div>
@@ -29,7 +32,64 @@ function dislpayList() {
     })
 }
 dislpayList();
-
+function displayDoneList() {
+    fetch('fetch/DoneList.php')
+    .then(response => response.json())
+    .then(data => {
+        let displaytodo = document.getElementById('displayTodoListDone');
+        displaytodo.innerHTML = '';
+        data.forEach(element => {
+            displaytodo.innerHTML += `
+            <div class="flex flex-col border-2 border-red-800 rounded-lg my-2 p-2">
+                <div class="flex flex-col space-y-3">
+                    <div class="col-md-10">
+                        <h3>Titre de l'event: ${element.titre}</h3>
+                        <p>Créer par ${element.login} le ${element.creer}</p>
+                    </div>
+                    <div class="flex flex-col bg-slate-500 p-2 rounded">
+                        <h3>Description :</h3>
+                        <p>
+                            <span>${element.contenu}</span>
+                            <span>ID: ${element.id}</span>
+                        </p>
+                    </div>
+                    <div class="flex justify-around">
+                        <button class="rounded-lg bg-red-500 text-white p-2" id="btnDelete" onclick="deleteList(${element.id})">Delete</button>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+    })
+}
+displayDoneList();
+function updateList(id) {
+    fetch(`fetch/fetch_update.php?id=${id}`)
+    .then(response => {
+        console.log(response);
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === 'success') {
+            dislpayList();
+        }
+    })
+}
+function deleteList(id) {
+    fetch(`fetch/fetch_delete.php?id=${id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'success') {
+                dislpayList();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
 dolistForm.addEventListener('submit', (e) => {
     e.preventDefault();
     fetch('fetch/fetch_todolist.php', {
@@ -44,13 +104,18 @@ dolistForm.addEventListener('submit', (e) => {
             message.classList.add('alert-danger');
             message.classList.remove('alert-success');
         } else if (data.status === 'success') {
-            message.innerHTML = 'Todo list ajouté';
+            message.innerHTML = 'Tâche ajouté';
             message.classList.add('alert-success');
             message.classList.remove('alert-danger');
         }
     })
 });
-btnTodoList.addEventListener('click', (e) => {
+btnTodoList.addEventListener('submit', (e) => {
     e.preventDefault();
+    setTimeout(dislpayList, 50);
+});
+
+let btnDelete = document.querySelector('#btnDelete');
+btnDelete.addEventListener('click', (e) => {
     setTimeout(dislpayList, 10);
 });
