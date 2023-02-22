@@ -24,12 +24,15 @@ session_start();
 <!--M A I N   C O N T E N T-->
     <main>
         <article>
-            <section class="flex justify-center pt-[4%]">
-                <div class="flex flex-col">
+            <section class="flex justify-center lg:pt-[5%] lg:h-[85vh]">
+                <div class="flex justify-center bg-[#000000BA] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
                     <div class="flex flex-col">
-                        <h2>
-                            <span>To Do List</span>
+                        <h2 class="text-7xl font-bold">
+                            <span id="effect-gradiant">ToDo List</span>
                         </h2>
+                        <p>
+                            <span>Gérez votre liste de tâches en ligne</span>
+                        </p>
                     </div>
                     <div class="flex flex-col">
                         <div id="btnContainer">

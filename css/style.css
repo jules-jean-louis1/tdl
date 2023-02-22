@@ -52,6 +52,16 @@ nav {
     opacity: 0;
 }
 /*###############################################*/
+/*##############     INDEX   #####################*/
+/*###############################################*/
+#effect-gradiant {
+    background: linear-gradient(to right, #2956CA, #311E54, #E23C32, #EF9F3B);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*###############################################*/
 /*############## TO DO LIST #####################*/
 /*###############################################*/
 #color-form {
