@@ -89,4 +89,8 @@ class DoList
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
     }
+    public function getRight($id)
+    {
+
+    }
 }

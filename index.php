@@ -25,7 +25,7 @@ session_start();
     <main>
         <article>
             <section class="flex justify-center lg:pt-[5%] lg:h-[85vh]">
-                <div class="flex justify-center bg-[#000000BA] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
+                <div class="flex justify-around lg:pt-[6%] bg-[#000000BA] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
                     <div class="flex flex-col">
                         <h2 class="text-7xl font-bold">
                             <span id="effect-gradiant">ToDo List</span>
