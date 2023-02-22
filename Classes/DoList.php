@@ -89,4 +89,9 @@ class DoList
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
     }
+    public function giveRightUser($id)
+    {
+        $query = $this->db->prepare("SELECT id, nom FROM utilisateurs WHERE droits_planification LIKE id = :id");
+        $query->execute(['id' => $id]);
+    }
 }
