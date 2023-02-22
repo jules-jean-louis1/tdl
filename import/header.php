@@ -1,5 +1,5 @@
 <header>
-    <nav class="bg-[#181818] text-white">
+    <nav class="bg-[#000000BA] backdrop-blur text-white">
         <?php if(isset($_SESSION['login'])) : ?>
             <div class="flex items-center justify-around py-2 mx-4">
                 <div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['login'])) :
-require_once '../Classes/Account.php';
+require_once 'Classes/Account.php';
 
 $info = new Account();
 $info->getInfos();
@@ -19,10 +19,10 @@ $info->getInfos();
     <!--JavaScript-->
     <script defer src="src/profil.js"></script>
     <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
-    <title>Profil</title>
+    <title>Profil - <?=$_SESSION['login']?></title>
 </head>
 <body>
-
+<?php require_once 'import/header.php'?>
 </body>
 </html>
 <?php

@@ -20,17 +20,17 @@ function dislpayList() {
         data.forEach(element => {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
-            <div class="flex flex-col rounded-lg ease-in bg-gradient-to-b from-[#fd7330] to-[#ef4b00] hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-700 my-2 p-2 lg:p-4 lg:w-full">
+            <div class="flex flex-col rounded-lg border-2 border-[#fff] bg-[#FFFFFF66] ease-in my-2 p-2 lg:p-4 lg:w-full text-black">
                 <div class="flex flex-col space-y-3">
                     <div class="col-md-10">
-                        <h3 class="font-bold">${element.titre}</h3>
+                        <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
                         <p class="font-light text-sm">Créer par ${element.login}</p>
                         <div class="flex items-center space-x-2">
                             <i class="fa-solid fa-clock"></i>
                             <p class="font-light text-sm">${formattedDate}</p>
                         </div>
                     </div>
-                    <div class="flex flex-col bg-[#00000040] p-2 rounded">
+                    <div class="flex flex-col bg-[#FFFFFF99] p-2 rounded hover:bg-[#FFFFFF] ease-out duration-300">
                         <h3>Description :</h3>
                         <p>
                             <span>${element.contenu}</span>

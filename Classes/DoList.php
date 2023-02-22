@@ -76,4 +76,17 @@ class DoList
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
     }
+    public function numberTasks()
+    {
+        $login = $_SESSION['login'];
+        $query = $this->db->prepare("SELECT COUNT(*) AS numberTasks
+                                    FROM utilisateurs
+                                    INNER JOIN tasks ON utilisateurs.id = tasks.id_utilisateur
+                                    WHERE done = 0 AND login = :login
+                                ");
+        $query->execute(['login' => $login]);
+        header("Content-Type: JSON");
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return json_encode($result, JSON_PRETTY_PRINT);
+    }
 }
