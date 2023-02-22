@@ -24,13 +24,42 @@ class Account
             exit;
         }
     }
-    public function getInfos()
+    public function deleteAccount($id)
     {
-        $login = $_SESSION['login'];
-        $query = $this->db->prepare("SELECT * FROM utilisateurs WHERE login = :login");
-        $query->execute(['login' => $login]);
-        header("Content-Type: JSON");
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        return json_encode($result, JSON_PRETTY_PRINT);
+        $query = $this->db->prepare("DELETE FROM utilisateurs WHERE id = :id");
+        $query->execute(['id' => $id]);
+    }
+    public function updateLogin($id, $login)
+    {
+        $query = $this->db->prepare("UPDATE utilisateurs SET login = :login WHERE id = :id");
+        $query->execute([
+            'login' => $login,
+            'id' => $id
+        ]);
+    }
+    public function updateNom($id, $nom)
+    {
+        $query = $this->db->prepare("UPDATE utilisateurs SET nom = :nom WHERE id = :id");
+        $query->execute([
+            'nom' => $nom,
+            'id' => $id
+        ]);
+    }
+    public function verifyPassword($password)
+    {
+        if (preg_match('/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,}$/', $password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function updatePassword($id, $password)
+    {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $query = $this->db->prepare("UPDATE utilisateurs SET password = :password WHERE id = :id");
+        $query->execute([
+            'password' => $password,
+            'id' => $id
+        ]);
     }
 }
