@@ -20,25 +20,27 @@ function dislpayList() {
         data.forEach(element => {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
-            <div class="flex flex-col rounded-lg border-2 border-[#fff] bg-[#FFFFFF66] ease-in my-2 p-2 lg:p-4 lg:w-full text-black">
-                <div class="flex flex-col space-y-3">
-                    <div class="col-md-10">
-                        <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
-                        <p class="font-light text-sm">Créer par ${element.login}</p>
-                        <div class="flex items-center space-x-2">
-                            <i class="fa-solid fa-clock"></i>
-                            <p class="font-light text-sm">${formattedDate}</p>
+            <div class="w-1/2 px-2 mb-4">
+                <div class="flex flex-col rounded-lg border-2 border-[#fff] bg-[#FFFFFF66] ease-in p-2 lg:p-4 text-black">
+                    <div class="flex flex-col space-y-3">
+                        <div class="col-md-10">
+                            <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
+                            <p class="font-light text-sm">Créer par ${element.login}</p>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-clock"></i>
+                                <p class="font-light text-sm">${formattedDate}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col bg-[#FFFFFF99] p-2 rounded hover:bg-[#FFFFFF] ease-out duration-300">
-                        <h3>Description :</h3>
-                        <p>
-                            <span>${element.contenu}</span>
-                        </p>
-                    </div>
-                    <div class="flex">
-                        <button class="text-white p-2" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
-                        <button class="text-white p-2" onclick="updateList(${element.id})"><i class="fa-solid fa-circle-check"></i></button>
+                        <div class="flex flex-col bg-[#FFFFFF99] p-2 rounded hover:bg-[#FFFFFF] ease-out duration-300">
+                            <h3>Description :</h3>
+                            <p>
+                                <span>${element.contenu}</span>
+                            </p>
+                        </div>
+                        <div class="flex">
+                            <button class="text-white p-2" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="text-white p-2" onclick="updateList(${element.id})"><i class="fa-solid fa-circle-check"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,27 +58,29 @@ function displayDoneList() {
         data.forEach(element => {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
-            <div class="flex flex-col bg-gradient-to-b from-orange-500 to-orange-600 ease-in hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-500 rounded-lg  my-2 p-2 lg:p-4 lg:w-full">
-                <div class="flex flex-col space-y-3">
-                    <div class="col-md-10">
-                        <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
-                        <p class="font-light text-sm">Créer par ${element.login}</p>
-                        <div class="flex items-center space-x-2">
-                            <i class="fa-solid fa-clock"></i>
-                            <p class="font-light text-sm">${formattedDate}</p>
+            <div class="w-1/2 px-2 mb-4">
+                <div class="flex flex-col bg-gradient-to-b from-orange-500 to-orange-600 ease-in hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-500 rounded-lg p-2 lg:p-4 w-[%50]">
+                    <div class="flex flex-col space-y-3">
+                        <div class="col-md-10">
+                            <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
+                            <p class="font-light text-sm">Créer par ${element.login}</p>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-clock"></i>
+                                <p class="font-light text-sm">${formattedDate}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col bg-[#00000040] p-2 rounded">
+                            <h3>Description :</h3>
+                            <p>
+                                <span>${element.contenu}</span>
+                            </p>
+                        </div>
+                        <div class="flex">
+                            <button class="text-white p-2" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
-                    <div class="flex flex-col bg-[#00000040] p-2 rounded">
-                        <h3>Description :</h3>
-                        <p>
-                            <span>${element.contenu}</span>
-                        </p>
-                    </div>
-                    <div class="flex">
-                        <button class="text-white p-2" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
-                </div>
-            </div>
+                </div>          
+            </div>  
             `;
         });
     })
