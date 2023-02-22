@@ -72,11 +72,11 @@ require_once 'Classes/DoList.php';
                            </div>
                        </div>
                        <div id="listTask" class="flex flex-row justify-around space-x-4">
-                           <div class="flex flex-col">
-                               <h1 class="text-3xl p-2">Tâches programmer</h1>
+                           <div class="flex flex-col w-[50%]">
+                               <h1 class="text-3xl p-2">Tâches planifiées</h1>
                                <div id="displayTodoList" class=""></div>
                            </div>
-                           <div class="flex flex-col items-center">
+                           <div class="flex flex-col w-[50%]">
                                <h1 class="text-3xl p-2">Tâches terminées</h1>
                                <div id="displayTodoListDone"></div>
                            </div>

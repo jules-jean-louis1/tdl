@@ -56,10 +56,10 @@ function displayDoneList() {
         data.forEach(element => {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
-            <div class="flex flex-col bg-gradient-to-b from-orange-600 to-red-600 rounded-lg  my-2 p-2 lg:p-4 lg:w-full">
+            <div class="flex flex-col bg-gradient-to-b from-orange-500 to-orange-600 ease-in hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-500 rounded-lg  my-2 p-2 lg:p-4 lg:w-full">
                 <div class="flex flex-col space-y-3">
                     <div class="col-md-10">
-                        <h3 class="font-bold">${element.titre}</h3>
+                        <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
                         <p class="font-light text-sm">Créer par ${element.login}</p>
                         <div class="flex items-center space-x-2">
                             <i class="fa-solid fa-clock"></i>
