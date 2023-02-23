@@ -43,6 +43,9 @@ require_once 'Classes/DoList.php';
                                        <span>Bienvenue <?= $_SESSION['login'] ?> sur votre Do To List</span>
                                        <span>Votre application de gestion de tâches.</span>
                                    </p>
+                                   <div class="flex flex-col">
+                                       <div id="displayUsers"></div>
+                                   </div>
                                <?php else : ?>
                                    <p class="text-lg">Bienvenue sur votre DoToList, votre application de gestion de
                                        tâches.</p>

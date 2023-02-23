@@ -89,4 +89,12 @@ class DoList
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
     }
+    public function infosUserReg()
+    {
+        $query = $this->db->prepare("SELECT `id`,`login` FROM utilisateurs");
+        $query->execute();
+        header("Content-Type: JSON");
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result, JSON_PRETTY_PRINT);
+    }
 }

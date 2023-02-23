@@ -1,5 +1,7 @@
 const dolistForm = document.querySelector('#todolistForm');
 const btnTodoList = document.querySelector('#btnTodoList');
+
+// Formatage de la date
 function formatDate(timestamp) {
     const date = new Date(timestamp);
     const year = date.getFullYear();
@@ -10,6 +12,13 @@ function formatDate(timestamp) {
     const seconds = date.getSeconds();
     return `${day}/${month}/${year} à ${hours}:${minutes}:${seconds}`;
 }
+//Modiffication de l'opacity du bouton du succès-erreur
+function fadeOutMsg(message) {
+    setTimeout(() => {
+        message.classList.add('hidden');
+    }, 3000);
+}
+
 
 function dislpayList() {
     fetch('fetch/fetch_list.php')
@@ -146,16 +155,36 @@ btnTodoList.addEventListener('submit', (e) => {
     setTimeout(dislpayList, 50);
 });
 
-/*
-let btnDelete = document.querySelector('#btnDelete');
-btnDelete.addEventListener('click', (e) => {
-    setTimeout(dislpayList, 10);
-});*/
-//Modiffication de l'opacity du bouton du succès
-function fadeOutMsg(message) {
-    setTimeout(() => {
-        message.classList.add('hidden');
-    }, 3000);
+//Affichage des users
+function displayUsers() {
+    fetch('fetch/todo_info_user_select.php')
+    .then(response => response.json())
+    .then(data => {
+
+        // Récupérer la div parent
+        const displayUsers = document.getElementById('displayUsers');
+
+        // Créer le select parent
+        const select = document.createElement('select');
+        select.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200';
+
+        data.forEach(utilisateur => {
+            const option = document.createElement('option');
+            option.value = utilisateur.id;
+            option.textContent = utilisateur.login;
+            option.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200'
+            select.appendChild(option);
+        });
+
+        // Ajouter le select parent dans la div parent
+        displayUsers.appendChild(select);
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des utilisateurs avec droits de planification', error);
+    });
 }
+displayUsers();
+
+//Creation du formulaire pour donner les droits a d'autres utilisateurs
 
 
