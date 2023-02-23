@@ -91,8 +91,9 @@ class DoList
     }
     public function infosUserReg()
     {
-        $query = $this->db->prepare("SELECT `id`,`login` FROM utilisateurs");
-        $query->execute();
+        $id = $_SESSION['id'];
+        $query = $this->db->prepare("SELECT id, login FROM utilisateurs WHERE id != :id");
+        $query->execute(array('id' => $id));
         header("Content-Type: JSON");
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
