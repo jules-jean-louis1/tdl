@@ -47,6 +47,7 @@ require_once 'Classes/DoList.php';
                                        <button type="button" id="btnAddUser" class="text-[#fff] bg-gradient-to-b from-[#fd7330] to-[#ef4b00] hover:bg-gradient-to-b hover:form-orange-500 hover:to-orange-600 rounded-lg px-3 py-2 ease-in">Ajouter un utilisateur</button>
                                        <div id="addUserFormContainer"></div>
 <!--                                       <div id="displayUsers"></div>-->
+                                       <div id="errorMsg2"></div>
                                    </div>
                                <?php else : ?>
                                    <p class="text-lg">Bienvenue sur votre DoToList, votre application de gestion de
@@ -55,20 +56,20 @@ require_once 'Classes/DoList.php';
                            </div>
                            <div id="containerTodoListForm">
                                <form action="fetch/fetch_todolist.php" method="post" id="todolistForm">
-                                   <div class="flex justify-center lg:flex-col rounded-lg p-3 lg:space-y-2" id="color-form">
+                                   <div class="flex justify-center lg:flex-col rounded-lg bg-[#222222CC] p-3 lg:space-y-2" id="color-form">
                                        <div class="flex flex-col">
-                                           <label for="titleTodoList">Titre de la tâche :</label>
+                                           <label for="titleTodoList" class="text-white">Titre de la tâche :</label>
                                            <input type="text" name="titleTodoList" id="titleTodoList"
-                                                  class="rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200">
+                                                  class="rounded-md p-2 text-black bg-[#d3d3d3] hover:bg-[#bfc3c8] ease-out duration-200">
                                        </div>
                                        <div class="flex flex-col">
-                                           <label for="descriptionTodoList">Description de la tâche :</label>
+                                           <label for="descriptionTodoList" class="text-white">Description de la tâche :</label>
                                            <input type="text" name="descriptionTodoList" id="descriptionTodoList"
-                                                  class="rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200">
+                                                  class="rounded-md p-2 text-black border-[1px] border-[#4e4e4e] bg-[#d3d3d3] hover:bg-[#bfc3c8] ease-out duration-200">
                                        </div>
                                        <div id="errorMsg"></div>
                                        <button type="submit" name="btnTodoList" id="btnTodoList"
-                                               class="ease-in bg-gradient-to-b from-[#fd7330] to-[#ef4b00] hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-700 rounded-lg text-white py-4 px-2">
+                                               class="ease-in duration-200 bg-[#222] hover:bg-[#111] rounded-lg text-white py-4 px-2">
                                            <i class="fa-solid fa-circle-plus"></i>
                                            Ajouter une tâche
                                        </button>

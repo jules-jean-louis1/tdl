@@ -68,7 +68,7 @@ function displayDoneList() {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
             <div class="w-1/2 px-2 mb-4">
-                <div class="flex flex-col bg-gradient-to-b from-orange-500 to-orange-600 ease-in hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-500 rounded-lg p-2 lg:p-4 w-[%50]">
+                <div class="flex flex-col border-2 border-[#00000040] bg-[#dcdcdc] hover:bg-[#b7b7b7] ease-in duration-300 rounded-lg p-2 lg:p-4 w-[%50]">
                     <div class="flex flex-col space-y-3">
                         <div class="col-md-10">
                             <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
@@ -78,7 +78,7 @@ function displayDoneList() {
                                 <p class="font-light text-sm">${formattedDate}</p>
                             </div>
                         </div>
-                        <div class="flex flex-col bg-[#00000040] p-2 rounded">
+                        <div class="flex flex-col bg-[#b7b7b7] p-2 rounded">
                             <h3>Description :</h3>
                             <p>
                                 <span>${element.contenu}</span>
@@ -259,6 +259,20 @@ btnDisplayUser.addEventListener('click', (e) => {
 function displayUsersWithRights() {
     fetch('fetch/formUserRight.php')
         .then(response => response.json())
+        .then(data => {
+            let displayMsg = document.querySelector('#errorMsg2');
+            if (data.status === 'success') {
+                displayMsg.innerHTML = 'Utilisateur ajouté';
+                displayMsg.classList.add('alert-success');
+                displayMsg.classList.remove('alert-danger');
+                fadeOutMsg(displayMsg);
+            } else if (data.status === 'error') {
+                displayMsg.innerHTML = 'Erreur lors de l\'ajout de l\'utilisateur';
+                displayMsg.classList.add('alert-danger');
+                displayMsg.classList.remove('alert-success');
+                fadeOutMsg(displayMsg);
+            }
+        })
 }
 
 
