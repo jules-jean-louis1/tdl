@@ -97,8 +97,18 @@ class DoList
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
     }
-    public function addUserRights($id)
+    public function addUserRights($id, $droits)
     {
+        $request1 = $this->db->prepare("SELECT `droits_planification` FROM `utilisateurs` WHERE id = :id");
+        $request1->execute(['id' => $id]);
+        $result = $request1->fetch(PDO::FETCH_ASSOC);
 
+        $request2 = $this->db->prepare("UPDATE utilisateurs SET droits_planification = CONCAT(droits_planification, ',', :droits) WHERE id = :id");
+        if(strops($result['droits_planification'], $id) !== false) {
+            return true;
+        } else {
+            $request2->execute(['id' => $id, 'droits' => $droits]);
+            return false;
+        }
     }
 }

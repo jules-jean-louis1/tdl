@@ -32,7 +32,7 @@ require_once 'Classes/DoList.php';
 <!--M A I N   C O N T E N T-->
    <main>
        <article>
-           <section class="flex justify-center">
+           <section class="flex justify-center h-[90vh]" id="background-color-gradiant">
                <div class="flex justify-center pt-[3%] lg:w-[90%] text-[#000]">
                    <div class="flex flex-col w-full">
                        <div class="flex justify-center items-start space-x-4 border-b-2 border-[#000] pb-2">

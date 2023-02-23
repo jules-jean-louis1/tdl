@@ -9,8 +9,10 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 body{
-    color: white;
+    color: black;
     background-color: #B8B8B8;
+    /*background: #F3F4F5;*/
+    /*background: #010314;*/
     /*background: url("../images/topography_contour_map_design_1504.jpg") no-repeat center center fixed;*/
 }
 /*###############################################*/
@@ -71,3 +73,7 @@ nav {
 input[type=text]:focus{
     outline: 2px solid #fd7330;     /* oranges! yey */
 }
+/*#background-color-gradiant {*/
+/*    background: radial-gradient(140% 107.13% at 50% 90%,transparent 37.41%, #ab9184 69.27%, #b8b8b8 100%);*/
+/*    border-radius: 2.4rem;*/
+/*}*/
