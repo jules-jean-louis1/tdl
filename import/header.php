@@ -1,7 +1,7 @@
 <header>
     <nav class="bg-[#000000BA] backdrop-blur text-white">
         <?php if(isset($_SESSION['login'])) : ?>
-            <div class="flex items-center justify-around py-2 mx-4">
+            <div class="flex items-center justify-between py-2 mx-8">
                 <div>
                     <a href="index.php" class="hover:text-[#fd7330]">
                         <i class="fa-solid fa-list-check"></i>

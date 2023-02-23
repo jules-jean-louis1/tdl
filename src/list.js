@@ -154,37 +154,111 @@ btnTodoList.addEventListener('submit', (e) => {
     e.preventDefault();
     setTimeout(dislpayList, 50);
 });
-
 //Affichage des users
-function displayUsers() {
+/*function displayUsers() {
     fetch('fetch/todo_info_user_select.php')
-    .then(response => response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
 
-        // Récupérer la div parent
-        const displayUsers = document.getElementById('displayUsers');
+            // Récupérer la div parent
+            const displayUsers = document.getElementById('displayUsers');
 
-        // Créer le select parent
-        const select = document.createElement('select');
-        select.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200';
+            // Créer le select parent
+            const select = document.createElement('select');
+            select.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200';
 
-        data.forEach(utilisateur => {
-            const option = document.createElement('option');
-            option.value = utilisateur.id;
-            option.textContent = utilisateur.login;
-            option.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200'
-            select.appendChild(option);
-        });
+            data.forEach(utilisateur => {
+                const option = document.createElement('option');
+                option.value = utilisateur.id;
+                option.textContent = utilisateur.login;
+                option.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200'
+                select.appendChild(option);
+            });
 
-        // Ajouter le select parent dans la div parent
-        displayUsers.appendChild(select);
+            // Ajouter le select parent dans la div parent
+            displayUsers.appendChild(select);
         })
         .catch(error => {
             console.error('Erreur lors de la récupération des utilisateurs avec droits de planification', error);
-    });
-}
-displayUsers();
+        });
+}*/
+function displayUsers() {
+    return fetch('fetch/todo_info_user_select.php')
+        .then(response => response.json())
+        .then(data => {
+            const select = document.createElement('select');
+            select.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200';
+            select.id = 'selectUser';
+            select.name = 'selectUser';
 
-//Creation du formulaire pour donner les droits a d'autres utilisateurs
+            data.forEach(utilisateur => {
+                const option = document.createElement('option');
+                option.value = utilisateur.id;
+                option.textContent = utilisateur.login;
+                option.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200'
+                select.appendChild(option);
+            });
+
+            return select;
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des utilisateurs avec droits de planification', error);
+        });
+}
+// Creation d'un formulaire qui permet de donner des droits à un autres utilisateurs
+function createAddUser(addUserFormContainer) {
+    let addUserForm = document.createElement('form');
+    addUserForm.id = 'addUserForm';
+    addUserForm.className = 'flex space-x-2 py-2 justify-center';
+    addUserForm.setAttribute('action', 'fetch/formUserRight.php')
+    addUserForm.setAttribute('method', 'POST');
+
+    displayUsers().then(select => {
+        addUserForm.appendChild(select);
+
+        let addUserFormSubmit = document.createElement('button');
+        addUserFormSubmit.className = 'rounded-md p-2 text-black bg-slate-300 hover:bg-slate-100 ease-out duration-200';
+        addUserFormSubmit.textContent = 'Ajouter';
+        addUserFormSubmit.type = 'submit';
+        addUserFormSubmit.name = 'addUser';
+        addUserFormSubmit.id = 'addUser';
+        addUserForm.appendChild(addUserFormSubmit);
+    });
+
+    addUserFormContainer.appendChild(addUserForm);
+
+    return addUserForm;
+}
+
+// Fonction qui supprime le formulaire d'ajout d'utilisateur
+function removeAddUserForm(parent, child) {
+    parent.removeChild(child);
+}
+// Bouton pour faire apparaitre/disparaitre le formulaire d'ajout d'utilisateur
+
+function toggleButton(btnDisplayUser, addUserFormContainer, addUserForm) {
+    if (addUserForm !== null) {
+        removeAddUserForm(addUserFormContainer, addUserForm);
+        btnDisplayUser.textContent = 'Ajouter un utilisateur';
+    }
+    else {
+        createAddUser(addUserFormContainer);
+        btnDisplayUser.textContent = 'Annuler';
+    }
+}
+let btnDisplayUser = document.querySelector('#btnAddUser');
+let addUserFormContainer = document.querySelector('#addUserFormContainer');
+let containerNodes = addUserFormContainer.childNodes;
+
+btnDisplayUser.addEventListener('click', (e) => {
+    let addUserForm = document.querySelector('#addUserForm');
+    toggleButton(btnDisplayUser, addUserFormContainer, addUserForm);
+});
+
+// Recupperation des utilisateur ajouter avec les droits de planification
+function displayUsersWithRights() {
+    fetch('fetch/formUserRight.php')
+        .then(response => response.json())
+}
 
 

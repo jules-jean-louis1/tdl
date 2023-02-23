@@ -43,8 +43,10 @@ require_once 'Classes/DoList.php';
                                        <span>Bienvenue <?= $_SESSION['login'] ?> sur votre Do To List</span>
                                        <span>Votre application de gestion de tâches.</span>
                                    </p>
-                                   <div class="flex flex-col">
-                                       <div id="displayUsers"></div>
+                                   <div class="flex flex-col w-[80%] pt-2">
+                                       <button type="button" id="btnAddUser" class="text-[#fff] bg-gradient-to-b from-[#fd7330] to-[#ef4b00] hover:bg-gradient-to-b hover:form-orange-500 hover:to-orange-600 rounded-lg px-3 py-2 ease-in">Ajouter un utilisateur</button>
+                                       <div id="addUserFormContainer"></div>
+<!--                                       <div id="displayUsers"></div>-->
                                    </div>
                                <?php else : ?>
                                    <p class="text-lg">Bienvenue sur votre DoToList, votre application de gestion de

@@ -97,4 +97,8 @@ class DoList
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
     }
+    public function addUserRights($id)
+    {
+
+    }
 }
