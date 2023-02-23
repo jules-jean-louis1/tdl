@@ -40,7 +40,7 @@ require_once 'Classes/DoList.php';
                                <h1 class="text-6xl p-2 uppercase font-semibold">TodoList</h1>
                                <?php if (isset($_SESSION['login'])) : ?>
                                    <p class="text-lg flex flex-col text-center">
-                                       <span>Bienvenue <?= $_SESSION['login'] ?> sur votre Do To List</span>
+                                       <span>Bienvenue <b class="capitalize"><?= $_SESSION['login'] ?></b> sur votre Do To List</span>
                                        <span>Votre application de gestion de tâches.</span>
                                    </p>
                                    <div class="flex flex-col w-[80%] pt-2">
@@ -56,7 +56,7 @@ require_once 'Classes/DoList.php';
                            </div>
                            <div id="containerTodoListForm">
                                <form action="fetch/fetch_todolist.php" method="post" id="todolistForm">
-                                   <div class="flex justify-center lg:flex-col rounded-lg bg-[#222222CC] p-3 lg:space-y-2" id="color-form">
+                                   <div class="flex justify-center lg:flex-col rounded-lg bg-[#222222CC] p-3 px-5    lg:space-y-2" id="color-form">
                                        <div class="flex flex-col">
                                            <label for="titleTodoList" class="text-white">Titre de la tâche :</label>
                                            <input type="text" name="titleTodoList" id="titleTodoList"

@@ -9,7 +9,10 @@ if(isset($_POST['titleTodoList'])) {
     $contenu = $_POST['descriptionTodoList'];
     $id_utilisateur = $_SESSION['id'];
 
-    if(empty($titre) || empty($contenu)) {
+    if(empty($titre)) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'emptyFields']);
+    } else if (empty($contenu)) {
         header('Content-Type: application/json');
         echo json_encode(['status' => 'emptyFields']);
     } else {

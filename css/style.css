@@ -39,17 +39,33 @@ body{
     font-size: 12px;
 }
 
-.alert-success {
+/*.alert-success {
     color: green;
     background: #0080001c;
     border: 1px solid;
     padding: 5px;
     border-radius: 5px;
-}
-.alert-danger {
+}*/
+/*.alert-danger {
     color: red;
     background: #ff00001c;
     border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+}*/
+.alert-success {
+    color: #fff;
+    background: #238636;
+/*    border: 1px solid rgba(240,246,252,0.1);*/
+    box-shadow: 0 0 transparent;
+    padding: 5px;
+    border-radius: 5px;
+}
+.alert-danger {
+    color: #fff;
+    background: #f85149;
+    border: 1px solid rgba(240,246,252,0.1);
+    box-shadow: 0 0 transparent;
     padding: 5px;
     border-radius: 5px;
 }

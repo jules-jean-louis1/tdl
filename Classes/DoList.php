@@ -105,7 +105,7 @@ class DoList
         $result = $request1->fetch(PDO::FETCH_ASSOC);
 
         $request2 = $this->db->prepare("UPDATE utilisateurs SET droits_planification = CONCAT(droits_planification, ',', :droits) WHERE id = :id");
-        if(strops($result['droits_planification'], $id) !== false) {
+        if(strpos($result['droits_planification'], $id) !== false) {
             return true;
         } else {
             $request2->execute(['id' => $id, 'droits' => $droits]);

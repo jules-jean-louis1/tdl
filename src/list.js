@@ -3,14 +3,14 @@ const btnTodoList = document.querySelector('#btnTodoList');
 
 // Formatage de la date
 function formatDate(timestamp) {
+    const months = ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Jui', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'];
     const date = new Date(timestamp);
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
+    const month = months[date.getMonth()];
     const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    return `${day}/${month}/${year} à ${hours}:${minutes}:${seconds}`;
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${month} ${day}, ${year} à ${hours}:${minutes}`;
 }
 //Modiffication de l'opacity du bouton du succès-erreur
 function fadeOutMsg(message) {
@@ -30,17 +30,17 @@ function dislpayList() {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
             <div class="w-1/2 px-2 mb-4">
-                <div class="flex flex-col rounded-lg border-2 border-[#fff] bg-[#FFFFFF66] ease-in p-2 lg:p-4 text-black">
+                <div class="flex flex-col rounded-lg border-2 border-[#fff] bg-[#FFFFFF66] ease-in p-2 lg:p-4 text-black ">
                     <div class="flex flex-col space-y-3">
                         <div class="col-md-10">
                             <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
-                            <p class="font-light text-sm">Créer par ${element.login}</p>
+                            <p class="font-light text-sm">Créer par <b>${element.login}</b></p>
                             <div class="flex items-center space-x-2">
                                 <i class="fa-solid fa-clock"></i>
                                 <p class="font-light text-sm">${formattedDate}</p>
                             </div>
                         </div>
-                        <div class="flex flex-col bg-[#FFFFFF99] p-2 rounded hover:bg-[#FFFFFF] ease-out duration-300">
+                        <div class="flex flex-col bg-[#FFFFFF99] p-2 rounded hover:bg-[#FFFFFF] ease-out duration-300 overflow-auto max-h-24 h-[6em]">
                             <h3>Description :</h3>
                             <p>
                                 <span>${element.contenu}</span>
@@ -72,13 +72,13 @@ function displayDoneList() {
                     <div class="flex flex-col space-y-3">
                         <div class="col-md-10">
                             <h3 class="font-bold border-b-2 border-[#000]">${element.titre}</h3>
-                            <p class="font-light text-sm">Créer par ${element.login}</p>
+                            <p class="font-light text-sm">Créer par <b>${element.login}</b></p>
                             <div class="flex items-center space-x-2">
                                 <i class="fa-solid fa-clock"></i>
                                 <p class="font-light text-sm">${formattedDate}</p>
                             </div>
                         </div>
-                        <div class="flex flex-col bg-[#b7b7b7] p-2 rounded">
+                        <div class="flex flex-col bg-[#b7b7b7] p-2 rounded overflow-auto max-h-24 h-[6em]">
                             <h3>Description :</h3>
                             <p>
                                 <span>${element.contenu}</span>
@@ -256,8 +256,14 @@ btnDisplayUser.addEventListener('click', (e) => {
 });
 
 // Recupperation des utilisateur ajouter avec les droits de planification
-function displayUsersWithRights() {
-    fetch('fetch/formUserRight.php')
+
+const addUserForm = document.querySelector('#addUserForm');
+addUserForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fetch('fetch/formUserRight.php', {
+        method: 'POST',
+        body: new FormData(addUserForm)
+    })
         .then(response => response.json())
         .then(data => {
             let displayMsg = document.querySelector('#errorMsg2');
@@ -273,6 +279,6 @@ function displayUsersWithRights() {
                 fadeOutMsg(displayMsg);
             }
         })
-}
+});
 
 

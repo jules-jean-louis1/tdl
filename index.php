@@ -24,7 +24,7 @@ session_start();
 <!--M A I N   C O N T E N T-->
     <main>
         <article>
-            <section class="flex justify-center lg:pt-[5%] lg:h-[85vh]">
+            <section class="flex justify-center lg:pt-[5%] lg:h-[92vh]">
                 <div class="flex justify-around lg:pt-[6%] bg-[#222] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
                     <div class="flex flex-col items-center">
                         <h2 class="text-7xl font-bold uppercase">
