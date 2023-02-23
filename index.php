@@ -25,23 +25,23 @@ session_start();
     <main>
         <article>
             <section class="flex justify-center lg:pt-[5%] lg:h-[85vh]">
-                <div class="flex justify-around lg:pt-[6%] bg-[#000000BA] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
-                    <div class="flex flex-col">
-                        <h2 class="text-7xl font-bold">
-                            <span id="effect-gradiant">ToDo List</span>
+                <div class="flex justify-around lg:pt-[6%] bg-[#222] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-7xl font-bold uppercase">
+                            <span id="effect-gradiant">ToDoList</span>
                         </h2>
                         <p>
-                            <span>Gérez votre liste de tâches en ligne</span>
+                            <span class="text-white">Gérez votre liste de tâches en ligne</span>
                         </p>
                     </div>
-                    <div class="flex flex-col">
-                        <div id="btnContainer">
+                    <div class="flex flex-col lg:space-y-3">
+                        <div id="btnContainer" class="flex lg:space-x-5 lg:pt-2">
                             <button id="btnRegister"
-                                    class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-500 to-orange-600 ease-in hover:bg-gradient-to-b hover:form-orange-600 hover:to-orange-500">
+                                    class="rounded-lg px-4 py-3 text-white border-[1px] border-[#4e4e4e] hover:bg-[#3e3e3e] duration-200 ease-out">
                                 S'inscrire
                             </button>
                             <button id="btnLogin"
-                                    class="border-2 border-orange-600 rounded-full px-3 py-2 hover:text-[#fd7330]">Se
+                                    class="rounded-lg px-4 py-3 text-[#222] border-[1px] border-[#4e4e4e] bg-[#bfc3c8] hover:bg-[#d3d3d3] duration-200 ease-out">Se
                                 connecter
                             </button>
                         </div>

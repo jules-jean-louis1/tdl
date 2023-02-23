@@ -1,7 +1,7 @@
 <header>
     <nav class="backdrop-blur text-white">
         <?php if(isset($_SESSION['login'])) : ?>
-            <div class="flex items-center justify-between py-2 mx-8">
+            <div class="flex items-center justify-between py-2 mx-8" id="border-header">
                 <div>
                     <a href="index.php" class="flex items-center space-x-3 bg-[#bfc3c8] px-4 py-2 rounded-lg text-[#222]">
                         <i class="fa-solid fa-list-check fa-lg"></i>

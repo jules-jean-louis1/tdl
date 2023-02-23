@@ -21,7 +21,7 @@ body{
 /*###############################################*/
 /*################## HEADER #####################*/
 /*###############################################*/
-nav {
+#border-header {
     border-bottom:  2px solid;
     border-image: linear-gradient(to right, #2956CA, #311E54, #E23C32, #EF9F3B) 1;
     /*background: rgba(255,255,255,.6)*/
@@ -61,7 +61,8 @@ nav {
 /*##############     INDEX   #####################*/
 /*###############################################*/
 #effect-gradiant {
-    background: linear-gradient(to right, #2956CA, #311E54, #E23C32, #EF9F3B);
+    /*background: linear-gradient(to right, #2956CA, #311E54, #E23C32, #EF9F3B);*/
+    background: radial-gradient(45% 100% at 50% 50%,#fff 30%,hsla(0,0%,100%,.35) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

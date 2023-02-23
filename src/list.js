@@ -47,8 +47,8 @@ function dislpayList() {
                             </p>
                         </div>
                         <div class="flex">
-                            <button class="text-white p-2" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
-                            <button class="text-white p-2" onclick="updateList(${element.id})"><i class="fa-solid fa-circle-check"></i></button>
+                            <button class="text-red-300 hover:text-red-500 p-2 px-3 hover:bg-[#bfc3c8] rounded-full" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="text-green-300 hover:text-green-500 p-2 px-3 hover:bg-[#bfc3c8] rounded-full" onclick="updateList(${element.id})"><i class="fa-solid fa-circle-check"></i></button>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ function displayDoneList() {
                             </p>
                         </div>
                         <div class="flex">
-                            <button class="text-white p-2" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="text-red-300 hover:text-red-500 p-2 px-3 hover:bg-[#bfc3c8] rounded-full" id="btnDelete" onclick="deleteList(${element.id})"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
                 </div>          

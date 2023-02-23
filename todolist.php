@@ -35,7 +35,7 @@ require_once 'Classes/DoList.php';
            <section class="flex justify-center h-[90vh]" id="background-color-gradiant">
                <div class="flex justify-center pt-[3%] lg:w-[90%] text-[#000]">
                    <div class="flex flex-col w-full">
-                       <div class="flex justify-center items-start space-x-4 border-b-2 border-[#000] pb-2">
+                       <div class="flex justify-evenly items-start bg-[#bfc3c8] rounded-lg p-2">
                            <div id="titleTodoList" class="flex flex-col items-center ">
                                <h1 class="text-6xl p-2 uppercase font-semibold">TodoList</h1>
                                <?php if (isset($_SESSION['login'])) : ?>
@@ -44,7 +44,7 @@ require_once 'Classes/DoList.php';
                                        <span>Votre application de gestion de tâches.</span>
                                    </p>
                                    <div class="flex flex-col w-[80%] pt-2">
-                                       <button type="button" id="btnAddUser" class="text-[#fff] bg-gradient-to-b from-[#fd7330] to-[#ef4b00] hover:bg-gradient-to-b hover:form-orange-500 hover:to-orange-600 rounded-lg px-3 py-2 ease-in">Ajouter un utilisateur</button>
+                                       <button type="button" id="btnAddUser" class="text-[#fff] bg-[#418fe5] rounded-lg px-3 py-2 ease-in">Ajouter un utilisateur</button>
                                        <div id="addUserFormContainer"></div>
 <!--                                       <div id="displayUsers"></div>-->
                                        <div id="errorMsg2"></div>
@@ -77,13 +77,13 @@ require_once 'Classes/DoList.php';
                                </form>
                            </div>
                        </div>
-                       <div id="listTask" class="flex flex-row justify-around space-x-4">
+                       <div id="listTask" class="flex flex-row justify-around space-x-4 mt-2">
                            <div class="flex flex-col w-[50%]">
-                               <h1 class="text-3xl p-2">Tâches planifiées</h1>
+                               <h1 class="text-center text-3xl p-2">Tâches planifiées</h1>
                                <div id="displayTodoList" class="flex flex-wrap"></div>
                            </div>
                            <div class="flex flex-col w-[50%]">
-                               <h1 class="text-3xl p-2">Tâches terminées</h1>
+                               <h1 class="text-center text-3xl p-2">Tâches terminées</h1>
                                <div id="displayTodoListDone" class="flex flex-wrap"></div>
                            </div>
                        </div>
