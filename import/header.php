@@ -5,9 +5,8 @@
                 <div>
                     <a href="index.php" class="flex items-center space-x-3 bg-[#bfc3c8] px-4 py-2 rounded-lg text-[#222]">
                         <i class="fa-solid fa-list-check fa-lg px py-3"></i>
-                        <h2 class="text-xl font-bold hidden md:block">TodoList</h2>
+                        <h2 class="text-xl font-bold hidden md:block lg:block">TodoList</h2>
                     </a>
-
                 </div>
                 <div>
                     <ul class="flex items-center space-x-2 font-semibold">
@@ -22,12 +21,15 @@
                 </div>
             </div>
         <?php else : ?>
-            <div class="flex justify-around py-3 mx-4">
+            <div class="flex items-center justify-between py-2 mx-2 lg:mx-8" id="border-header">
                 <div>
-                    <h1>TodoList</h1>
+                    <a href="index.php" class="flex items-center space-x-3 bg-[#bfc3c8] px-4 py-2 rounded-lg text-[#222]">
+                        <i class="fa-solid fa-list-check fa-lg px py-3"></i>
+                        <h2 class="text-xl font-bold hidden md:block lg:block">TodoList</h2>
+                    </a>
                 </div>
                 <div>
-                    <ul class="flex space-x-2">
+                    <ul class="flex items-center space-x-2 font-semibold">
                         <li><a href="todolist.php" class="hover:text-[#fd7330] text-[#222]">TodoList</a></li>
                         <li><a href="index.php" class="flex items-center space-x-2 rounded-lg px-3 py-2 ease-in bg-[#222]">Inscription</a></li>
                         <li><a href="index.php" class="border-[1px] border-[#222] rounded-lg px-3 py-2  text-[#222] hover:text-[#fd7330]">Connexion</a></li>
