@@ -104,11 +104,19 @@ class DoList
         $request1->execute(['id' => $id]);
         $result = $request1->fetch(PDO::FETCH_ASSOC);
 
-        $request2 = $this->db->prepare("UPDATE utilisateurs SET droits_planification = CONCAT(droits_planification, ',', :droits) WHERE id = :id");
-        if(strpos($result['droits_planification'], $id) !== false) {
+
+        if (strpos(','.$result['droits_planification'].',', ','.$id.',') !== false) {
             return true;
         } else {
-            $request2->execute(['id' => $id, 'droits' => $droits]);
+            if (empty($result['droits_planification'])) {
+                $new_droits_planification = $id;
+            } else {
+                $new_droits_planification = $result['droits_planification'].','.$id;
+            }
+            $request2 = $this->db->prepare("UPDATE utilisateurs SET droits_planification = :new_droits_planification WHERE id = :id");
+            $request2->bindParam(':new_droits_planification', $new_droits_planification);
+            $request2->bindParam(':id', $id);
+            $request2->execute();
             return false;
         }
     }

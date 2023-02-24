@@ -24,8 +24,8 @@ session_start();
 <!--M A I N   C O N T E N T-->
     <main>
         <article>
-            <section class="flex justify-center lg:pt-[5%] lg:h-[92vh]">
-                <div class="flex justify-around lg:pt-[6%] bg-[#222] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
+            <section class="flex justify-center h-[87vh] pt-[7%] lg:h-[92vh]">
+                <div class="flex lg:flex-row flex-col lg:justify-around pt-[20%] lg:pt-[6%] bg-[#222] backdrop-blur rounded-lg lg:w-[80%] lg:h-[80%]">
                     <div class="flex flex-col items-center">
                         <h2 class="text-7xl font-bold uppercase">
                             <span id="effect-gradiant">ToDoList</span>
@@ -34,8 +34,8 @@ session_start();
                             <span class="text-white">Gérez votre liste de tâches en ligne</span>
                         </p>
                     </div>
-                    <div class="flex flex-col lg:space-y-3">
-                        <div id="btnContainer" class="flex lg:space-x-5 lg:pt-2">
+                    <div class="flex flex-col items-center lg:items-start lg:space-y-3">
+                        <div id="btnContainer" class="flex space-x-3 lg:space-x-5 lg:pt-2">
                             <button id="btnRegister"
                                     class="rounded-lg px-4 py-3 text-white border-[1px] border-[#4e4e4e] hover:bg-[#3e3e3e] duration-200 ease-out">
                                 S'inscrire
@@ -51,5 +51,8 @@ session_start();
             </section>
         </article>
     </main>
+<!--M A I N   C O N T E N T-->
+<!--F O O T E R   C O N T E N T-->
+<?php require_once 'import/footer.php'?>
 </body>
 </html>

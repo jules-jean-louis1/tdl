@@ -10,14 +10,22 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $requser = $pdo->prepare("SELECT `droits_planification` FROM `utilisateurs` WHERE id = ?");
 $requser->execute(array($_SESSION['id']));
 $userinfo = $requser->fetch(PDO::FETCH_ASSOC);
-echo $userinfo['droits_planification'];
-echo $_SESSION['id'];
-$requser2 =$pdo->prepare("UPDATE utilisateurs SET droits_planification = CONCAT(droits_planification, ',', '0') WHERE id = ?");
-if (strpos($userinfo['droits_planification'], $_SESSION['id']) !== false) {
+echo $userinfo['droits_planification']."<br>";
+echo "ID:" . $_SESSION['id'];
+if (strpos(','.$userinfo['droits_planification'].',', ','.$_SESSION['id'].',') !== false) {
     echo "Vous avez les droits";
 } else {
-    $requser2->execute(array($_SESSION['id']));
+    if (empty($userinfo['droits_planification'])) {
+        $new_droits_planification = $_SESSION['id'];
+    } else {
+        $new_droits_planification = $userinfo['droits_planification'].','.$_SESSION['id'];
+    }
+    $requser2 = $pdo->prepare("UPDATE utilisateurs SET droits_planification = :new_droits_planification WHERE id = :id_utilisateur");
+    $requser2->bindParam(':new_droits_planification', $new_droits_planification);
+    $requser2->bindParam(':id_utilisateur', $_SESSION['id']);
+    $requser2->execute();
 }
+
 var_dump($userinfo);
 ?>
 

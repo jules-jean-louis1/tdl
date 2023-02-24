@@ -1,4 +1,4 @@
-<form action="" method="post" id="loginForm">
+<form action="" method="post" id="loginForm" class="p-3 rounded-lg mt-2 lg:mt border-[1px] border-[#d3d3d3]">
     <div class="flex flex-col space-y-2">
         <label for="login" class="text-white">Login :</label>
         <input type="text" name="login" id="login" placeholder="Login"  class="bg-slate-200 p-2 rounded-lg">

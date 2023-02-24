@@ -32,15 +32,15 @@ require_once 'Classes/DoList.php';
 <!--M A I N   C O N T E N T-->
    <main>
        <article>
-           <section class="flex justify-center h-[90vh]" id="background-color-gradiant">
-               <div class="flex justify-center pt-[3%] lg:w-[90%] text-[#000]">
-                   <div class="flex flex-col w-full">
-                       <div class="flex justify-evenly items-start bg-[#bfc3c8] rounded-lg p-2">
+           <section class="flex justify-center  lg:h-[92vh]" id="background-color-gradiant">
+               <div class="flex flex-col lg:flex-row lg:justify-center pt-[3%] lg:w-[90%] text-[#000]">
+                   <div class="flex flex-col w-[92vw] lg:w-full">
+                       <div class="flex flex-col items-center lg:flex-row lg:justify-evenly items-start bg-[#bfc3c8] rounded-lg p-2 space-y-2">
                            <div id="titleTodoList" class="flex flex-col items-center ">
                                <h1 class="text-6xl p-2 uppercase font-semibold">TodoList</h1>
                                <?php if (isset($_SESSION['login'])) : ?>
                                    <p class="text-lg flex flex-col text-center">
-                                       <span>Bienvenue <b class="capitalize"><?= $_SESSION['login'] ?></b> sur votre Do To List</span>
+                                       <span>Bienvenue <b class="capitalize underline decoration-[#418fe5]"><?= $_SESSION['login'] ?></b> sur votre Do To List</span>
                                        <span>Votre application de gestion de tâches.</span>
                                    </p>
                                    <div class="flex flex-col w-[80%] pt-2">
@@ -56,7 +56,7 @@ require_once 'Classes/DoList.php';
                            </div>
                            <div id="containerTodoListForm">
                                <form action="fetch/fetch_todolist.php" method="post" id="todolistForm">
-                                   <div class="flex justify-center lg:flex-col rounded-lg bg-[#222222CC] p-3 px-5    lg:space-y-2" id="color-form">
+                                   <div class="flex justify-center flex-col rounded-lg bg-[#222222CC] p-3 px-5 space-y-2" id="color-form">
                                        <div class="flex flex-col">
                                            <label for="titleTodoList" class="text-white">Titre de la tâche :</label>
                                            <input type="text" name="titleTodoList" id="titleTodoList"
@@ -77,12 +77,12 @@ require_once 'Classes/DoList.php';
                                </form>
                            </div>
                        </div>
-                       <div id="listTask" class="flex flex-row justify-around space-x-4 mt-2">
-                           <div class="flex flex-col w-[50%]">
+                       <div id="listTask" class="flex flex-col lg:flex-row justify-around lg:space-x-4 mt-2 h-[95%] overflow-auto">
+                           <div class="flex flex-col lg:w-[50%]">
                                <h1 class="text-center text-3xl p-2">Tâches planifiées</h1>
                                <div id="displayTodoList" class="flex flex-wrap"></div>
                            </div>
-                           <div class="flex flex-col w-[50%]">
+                           <div class="flex flex-col lg:w-[50%]">
                                <h1 class="text-center text-3xl p-2">Tâches terminées</h1>
                                <div id="displayTodoListDone" class="flex flex-wrap"></div>
                            </div>
@@ -92,5 +92,8 @@ require_once 'Classes/DoList.php';
            </section>
        </article>
    </main>
+<!--M A I N   C O N T E N T-->
+<!--F O O T E R   C O N T E N T-->
+<?php require_once 'import/footer.php'?>
 </body>
 </html>

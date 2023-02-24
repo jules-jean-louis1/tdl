@@ -29,7 +29,7 @@ function dislpayList() {
         data.forEach(element => {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
-            <div class="w-1/2 px-2 mb-4">
+            <div class="w-full lg:w-1/2 px-2 mb-4">
                 <div class="flex flex-col rounded-lg border-2 border-[#fff] bg-[#FFFFFF66] ease-in p-2 lg:p-4 text-black ">
                     <div class="flex flex-col space-y-3">
                         <div class="col-md-10">
@@ -41,7 +41,6 @@ function dislpayList() {
                             </div>
                         </div>
                         <div class="flex flex-col bg-[#FFFFFF99] p-2 rounded hover:bg-[#FFFFFF] ease-out duration-300 overflow-auto max-h-24 h-[6em]">
-                            <h3>Description :</h3>
                             <p>
                                 <span>${element.contenu}</span>
                             </p>
@@ -67,7 +66,7 @@ function displayDoneList() {
         data.forEach(element => {
             const formattedDate = formatDate(element.creer);
             displaytodo.innerHTML += `
-            <div class="w-1/2 px-2 mb-4">
+            <div class="w-full lg:w-1/2 px-2 mb-4">
                 <div class="flex flex-col border-2 border-[#00000040] bg-[#dcdcdc] hover:bg-[#b7b7b7] ease-in duration-300 rounded-lg p-2 lg:p-4 w-[%50]">
                     <div class="flex flex-col space-y-3">
                         <div class="col-md-10">
@@ -79,7 +78,6 @@ function displayDoneList() {
                             </div>
                         </div>
                         <div class="flex flex-col bg-[#b7b7b7] p-2 rounded overflow-auto max-h-24 h-[6em]">
-                            <h3>Description :</h3>
                             <p>
                                 <span>${element.contenu}</span>
                             </p>
@@ -137,13 +135,17 @@ dolistForm.addEventListener('submit', (e) => {
     .then(data => {
         let message = document.querySelector('#errorMsg');
         if (data.status === 'emptyFields') {
+            console.log('emptyFields');
             message.innerHTML = 'Veillez remplir tous les champs';
             message.classList.add('alert-danger');
             message.classList.remove('alert-success');
             fadeOutMsg(message);
+            message.classList.remove('hidden');
         } else if (data.status === 'success') {
+            console.log('success');
             dislpayList();
             message.innerHTML = 'Tâche ajouté';
+            message.classList.remove('hidden');
             message.classList.add('alert-success');
             message.classList.remove('alert-danger');
             fadeOutMsg(message);
