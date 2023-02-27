@@ -4,7 +4,8 @@ if (isset($_POST['btn'])) {
     $test = $_POST['select'];
     var_dump($test);
 }
-$pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+//$pdo = new PDO('mysql:host=localhost;dbname=todolist', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=jules-jean-louis_tdl', 'todolist', 'Urqr2#636');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $requser = $pdo->prepare("SELECT `droits_planification` FROM `utilisateurs` WHERE id = ?");

@@ -8,10 +8,10 @@ define("DB_PASSWORD", '');
 
 //Plesk
 /*define("DB_HOST", 'localhost');
-define("DB_NAME", ' jules-jean-louis_ tdl');
+define("DB_NAME", ' jules-jean-louis_todolist');
 define('DB_CHARSET', 'utf8');
-define("DB_USER", 'todolist');
-define("DB_PASSWORD", 'Urqr2#636');*/
+define("DB_USER", 'todolist-jjl');
+define("DB_PASSWORD", 'todolist-jjl');*/
 
 class DoList
 {
