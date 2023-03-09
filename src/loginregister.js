@@ -26,7 +26,7 @@ btnRegisterForm.addEventListener('click', async (ev) => {
                         message.classList.add('alert-danger');
                         message.classList.remove('alert-success');
                     } else if (data.status === 'passwordInvalid') {
-                        message.innerHTML = 'Le mot de passe doit contenir au moins 5 caractères';
+                        message.innerHTML = 'Le mot de passe doit contenir au moins 5 caractères dont un chiffre';
                         message.classList.add('alert-danger');
                         message.classList.remove('alert-success');
                     } else if (data.status === 'passwordNotMatch') {
